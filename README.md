@@ -6,22 +6,22 @@ A collection of easy to understand reverse shells in many different languages.
 hark
 ====
 
-RevShell's Universal Listener.
+RevShell's Universal Listener. - Currently only netcat wrapper
 
 jRevShell
 =========
 
 Java reverse shells:
 
-* jRevShell - Complete reverse shell, nothing excluded. Tries many techniques to get the shell through including; netcat (local and download), bash, raw sockets, xterm, and eventually more. Windows, Linux, OS X, BSD.
-
 * jRevCat - Light weight Netcat reverse shell in java. Downloads the correct ncat version/architecture for the OS (Windows or x86/i686 Linux for now).
+
+* jRevBash - Light weight bash reverse shell in java. Tries a couple of different techniques to force bash to forward (nix only).
 
 PLANNED
 =======
-* jRevLCat - A heavier version of jRevCat that packages netcat inside specified JAR (or inside the java itself as variable).
+* jRevShell - Complete reverse shell, nothing excluded. Tries many techniques to get the shell through including; netcat (local and download), bash, raw sockets, xterm, and eventually more. Windows, Linux, OS X, BSD.
 
-* jRevBash - Light weight bash reverse shell in java. Tries a couple of different techniques to force bash to forward (nix only).
+* jRevLCat - A heavier version of jRevCat that packages netcat inside specified JAR (or inside the java itself as variable).
 
 * jRevMet - Attempt to get a meterpreter reverse shell by downloading the executable.
 

