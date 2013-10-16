@@ -1,0 +1,9 @@
+#!/bin/bash
+#TODO Rebuild this in a real language or at least a better wrapper for v0.2
+if [ "$1" == "" ]
+	then
+		echo "Usage: ./hark <port>"
+		exit 1
+fi
+
+ncat -l -p $1 -v
