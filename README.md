@@ -17,6 +17,15 @@ Java reverse shells:
 
 * jRevBash - Light weight bash reverse shell in java. Tries a couple of different techniques to force bash to forward (nix only).
 
+bRevShell
+=========
+
+Bash reverse shells:
+
+* Bash /dev/tcp redirection shell
+
+* Obfuscation: a couple examples of obfuscation in bash reverse shells.
+
 PLANNED
 =======
 * jRevShell - Complete reverse shell, nothing excluded. Tries many techniques to get the shell through including; netcat (local and download), bash, raw sockets, xterm, and eventually more. Windows, Linux, OS X, BSD.
