@@ -48,6 +48,23 @@ rRevShell
 
 Ruby reverse shells:
 
+peRevShell
+==========
+
+Perl reverse shells:
+
+phpRevShell
+===========
+
+PHP reverse shells:
+
+etcRevShell
+===========
+
+Misc. collection of shells:
+
+* xterm
+
 Licensing
 =========
 
