@@ -43,12 +43,14 @@ pyRevShell
 
 Python reverse shells:
 
+pyRevShell - use python sockets to make a reverse shell.
+
 rRevShell
 =========
 
 Ruby reverse shells:
 
-peRevShell
+pRevShell
 ==========
 
 Perl reverse shells:
