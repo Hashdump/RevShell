@@ -6,7 +6,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 
-public class revShellSmall {
+public class jRevCat {
 	/*
 	 * Declarations
 	 */
